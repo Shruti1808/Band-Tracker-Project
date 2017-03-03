@@ -1,0 +1,56 @@
+C# advanced databases independent project
+
+Project
+Band Tracker
+Write a program to track bands and the venues where they've played concerts. Make a Venue class and a Band class.
+
+Build full CRUD functionality for Venues. Create, Read (show all, show single), Update, Delete.
+Allow a user to create Bands that have played at a Venue. Don't worry about building out updating or deleting for bands.
+There is a many-to-many relationship between bands and concert venues, so a venue can host many bands, and a band can play at many venues. Create a join table to store these relationships.
+When a user is viewing a single concert venue, list out all of the bands that have played at that venue so far and allow them to add a band to that venue. Create a method to get the bands who have played at a venue, and use a join statement in it.
+When a user is viewing a single Band, list out all of the Venues that have hosted that band and allow them to add a Venue to that Band. Use a join statement in this method too.
+Requirements
+For this code review, use the following names for your databases:
+
+Production database: band_tracker
+Development database: band_tracker_test
+Resource names will be venues and bands
+Include .sql files holding the schema for both your band_tracker and band_tracker_test databases (see instructions in the Migrating databases with SSMS lesson) . In your README, include the details of your database names and tables as a back up (see the example below from a To Do application):
+
+In SQLCMD:
+
+CREATE DATABASE todo;
+GO
+USE todo;
+GO
+CREATE TABLE categories (id INT IDENTITY(1,1), name VARCHAR(255));
+CREATE TABLE tasks (id INT IDENTITY(1,1), description VARCHAR(255));
+Objectives
+Here are the objectives that will be used to review your code:
+
+Do database tables and columns follow proper naming conventions?
+Do you have thorough test coverage with passing tests?
+Did you write the test methods and make them pass before starting on routes for each class?
+Does your Venue class have all CRUD methods implemented in your app? That includes: Create, Read (all and singular) Update and Delete (all and singular).
+Are you able to view all the bands that have played at a single venue, as well as all the venues that have hosted a particular band?
+Is the many-to-many relationship set up correctly in the database?
+Are the commands on how to set up the database in the README? Did you include the .sql files?
+Is the project in a polished, portfolio-quality state?
+Was required functionality in place by the 5:00pm Friday deadline?
+Does the project demonstrate all of this week's concepts? If prompted, are you able to discuss your with an instructor using correct terminology?
+Previous Objectives
+And then, make sure to follow all the requirements from last week too.
+
+Was Razor syntax used on view pages where appropriate?
+Is your logic easy to understand?
+Did you use descriptive variable names?
+Does your code have proper indentation and spacing?
+Did you include a README with a description of the program, setup instructions, a copyright, a license, and your name?
+Is the project tracked in Git, and did you regularly make commits with clear messages that finish the phrase "This commit will…"?
+Further Exploration
+Add styling and images to your site
+Complete CRUD functionality for bands
+Add functionality to suggest bands to users at random.
+As a user, I want band names and venues to be saved with a capital letter no matter how I enter them.
+Only certain bands can play at certain venues (say, some venues are large, some are small. Some bands are popular, others less so.)
+Feel free to add on any additional functionality as long as you fulfill minimum requirements for this CR, and adequately test your code.
