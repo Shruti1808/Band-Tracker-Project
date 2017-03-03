@@ -45,6 +45,7 @@ namespace BandTracker
                 return (idEquality && nameEquality);
             }
         }
+
         public static List<Band> GetAll()
         {
             List<Band> allBands = new List<Band>{};
@@ -164,31 +165,54 @@ namespace BandTracker
             {
                 conn.Close();
             }
+            
+        }
 
+
+        public void AddVenue(Venue newVenue)
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO venues_bands (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
+
+            SqlParameter bandIdParameter = new SqlParameter();
+            bandIdParameter.ParameterName = "@BandId";
+            bandIdParameter.Value = this.GetId();
+
+            SqlParameter venueIdParameter = new SqlParameter();
+            venueIdParameter.ParameterName = "@VenueId";
+            venueIdParameter.Value = newVenue.GetId();
+
+            cmd.Parameters.Add(bandIdParameter);
+            cmd.Parameters.Add(venueIdParameter);
+
+            cmd.ExecuteNonQuery();
+
+            if (conn != null)
+            {
+                conn.Close();
+            }
         }
 
         public void Delete()
-   {
-     SqlConnection conn = DB.Connection();
-     conn.Open();
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
 
-     SqlCommand cmd = new SqlCommand("DELETE FROM bands WHERE id = @BandId; DELETE FROM venues_bands WHERE band_id = @BandId;", conn);
-     SqlParameter bandIdParameter = new SqlParameter();
-     bandIdParameter.ParameterName = "@BandId";
-     bandIdParameter.Value = this.GetId();
+            SqlCommand cmd = new SqlCommand("DELETE FROM bands WHERE id = @BandId; DELETE FROM venues_bands WHERE band_id = @BandId;", conn);
+            SqlParameter bandIdParameter = new SqlParameter();
+            bandIdParameter.ParameterName = "@BandId";
+            bandIdParameter.Value = this.GetId();
 
-     cmd.Parameters.Add(bandIdParameter);
-     cmd.ExecuteNonQuery();
+            cmd.Parameters.Add(bandIdParameter);
+            cmd.ExecuteNonQuery();
 
-     if (conn != null)
-     {
-       conn.Close();
-     }
-   }
-
-
-
-
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
 
 
         public static void DeleteAll()
