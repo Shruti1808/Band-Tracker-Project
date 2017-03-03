@@ -35,6 +35,23 @@ namespace BandTracker
     }
 
     [Fact]
+    public void Test_Save_AssignsIdToObject()
+    {
+      //Arrange
+      Band testBand = new Band("Grouplove");
+
+      //Act
+      testBand.Save();
+      Band savedBand = Band.GetAll()[0];
+
+      int result = savedBand.GetId();
+      int testId = testBand.GetId();
+
+      //Assert
+      Assert.Equal(testId, result);
+    }
+
+    [Fact]
     public void Test_Save()
     {
         //Arrange
