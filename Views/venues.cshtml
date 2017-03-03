@@ -15,7 +15,7 @@ else
     <ul>
     @foreach(var venue in Model)
     {
-        <li><a href="/venues/@venue.GetId()">@venue.GetName()</a></li>
+        <li><a href="/venues/@venue.GetId()">@venue.GetName()</a> | <a href="/venue/edit/@venue.GetId()">Edit</a></li>
 
     }
     </ul>
