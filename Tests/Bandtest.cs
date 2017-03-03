@@ -74,13 +74,28 @@ namespace BandTracker
             testBand.Save();
             //Act
             Band foundBand = Band.Find(testBand.GetId());
-            
+
             //Assert
             Assert.Equal(testBand,foundBand);
 
         }
 
+        [Fact]
+        public void Test_Update_UpdateBandInDatabase()
+        {
+            //Arrange
+            Band newBand = new Band ("Metallica");
+            newBand.Save();
 
+            string newName = "ColdPlay";
+
+            //Act
+            newBand.Update(newName);
+            string result = newBand.GetName();
+
+            //Assert.Equal
+             Assert.Equal(newName, result);
+        }
 
 
 
