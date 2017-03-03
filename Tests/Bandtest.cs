@@ -23,6 +23,17 @@ namespace BandTracker
       Assert.Equal(0, result);
     }
 
+    [Fact]
+    public void Test_EqualOverrideTrueForSameName()
+    {
+      //Arrange, Act
+      Band firstBand = new Band("The Beatles");
+      Band secondBand = new Band("The Beatles");
+
+      //Assert
+      Assert.Equal(firstBand, secondBand);
+    }
+
     public void Dispose()
     {
       Band.DeleteAll();
