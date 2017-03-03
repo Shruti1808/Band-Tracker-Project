@@ -135,36 +135,10 @@ namespace BandTracker
             Assert.Equal(testList, result);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public void Dispose()
         {
             Band.DeleteAll();
+            Venue.DeleteAll();
         }
     }
 }

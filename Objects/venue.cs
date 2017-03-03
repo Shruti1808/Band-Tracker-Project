@@ -173,6 +173,66 @@ namespace BandTracker
 
     }
 
+    public void AddBand(Band newBand)
+        {
+          SqlConnection conn = DB.Connection();
+          conn.Open();
+
+          SqlCommand cmd = new SqlCommand("INSERT INTO venues_bands (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
+
+          SqlParameter bandIdParameter = new SqlParameter();
+          bandIdParameter.ParameterName = "@BandId";
+          bandIdParameter.Value = newBand.GetId();
+          cmd.Parameters.Add(bandIdParameter);
+
+          SqlParameter venueIdParameter = new SqlParameter();
+          venueIdParameter.ParameterName = "@VenueId";
+          venueIdParameter.Value = this.GetId();
+          cmd.Parameters.Add(venueIdParameter);
+
+          cmd.ExecuteNonQuery();
+
+          if (conn != null)
+          {
+            conn.Close();
+          }
+        }
+
+        public List<Band> GetBands()
+        {
+          SqlConnection conn = DB.Connection();
+          SqlDataReader rdr;
+          conn.Open();
+
+          SqlCommand cmd = new SqlCommand("SELECT bands.* FROM venues JOIN venues_bands  ON (venues.id = venues_bands.venue_id) JOIN bands ON (venues_bands.band_id = bands.id) WHERE venues.id = @VenueId", conn);
+          SqlParameter VenueIdParameter = new SqlParameter();
+          VenueIdParameter.ParameterName = "@VenueId";
+          VenueIdParameter.Value = this.GetId().ToString();
+
+          cmd.Parameters.Add(VenueIdParameter);
+
+          rdr = cmd.ExecuteReader();
+
+          List<Band> bands = new List<Band>{};
+
+          while(rdr.Read())
+          {
+            int bandId = rdr.GetInt32(0);
+            string bandDescription = rdr.GetString(1);
+            Band newBand = new Band(bandDescription, bandId);
+            bands.Add(newBand);
+          }
+
+          if (rdr != null)
+          {
+            rdr.Close();
+          }
+          if (conn != null)
+          {
+            conn.Close();
+          }
+          return bands;
+        }
 
 
 
@@ -187,7 +247,7 @@ namespace BandTracker
         SqlConnection conn = DB.Connection();
         conn.Open();
 
-        SqlCommand cmd = new SqlCommand("DELETE from venues;", conn);
+        SqlCommand cmd = new SqlCommand("DELETE from venues; DELETE FROM venues_bands;", conn);
         cmd.ExecuteNonQuery();
         conn.Close();
     }
