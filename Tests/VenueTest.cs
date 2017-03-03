@@ -50,6 +50,20 @@ namespace BandTracker
             Assert.Equal(testList, result);
         }
 
+        [Fact]
+        public void Test_Find_FindsVenueInDatabase()
+        {
+            //Arrange
+            Venue testVenue = new Venue("Roseland Theater");
+            testVenue.Save();
+
+            //Act
+            Venue foundVenue = Venue.Find(testVenue.GetId());
+
+            //Assert
+            Assert.Equal(testVenue, foundVenue);
+        }
+
         public void Dispose()
         {
             Band.DeleteAll();
