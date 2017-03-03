@@ -110,7 +110,7 @@ namespace BandTracker
             cmd.Parameters.Add(bandIdParameter);
             SqlDataReader rdr = cmd.ExecuteReader();
 
-            int foundBandId =0;
+            int foundBandId = 0;
             string foundBandName = null;
 
             while(rdr.Read())
@@ -119,7 +119,7 @@ namespace BandTracker
                 foundBandName = rdr.GetString(1);
             }
 
-            Band foundBand = new Band(foundBandId,foundBandName);
+            Band foundBand = new Band(foundBandName,foundBandId);
             if (rdr != null)
             {
                 rdr.Close();
