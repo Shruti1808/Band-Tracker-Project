@@ -110,7 +110,7 @@ namespace BandTracker
 
             Band testBand2 = new Band("Metallica");
             testBand2.Save();
-            
+
             //Act
             testVenue.AddBand(testBand1);
             List<Band> result = testVenue.GetBands();
@@ -119,6 +119,24 @@ namespace BandTracker
             //Assert
             Assert.Equal(testList, result);
         }
+
+        [Fact]
+        public void Test_Delete_DeleteSingleVenueFromDatabase()
+        {
+            //Arrange
+            Venue testVenue1 = new Venue("KeyArena Theater");
+            testVenue1.Save();
+            Venue testVenue2 = new Venue("Roseland Theater");
+            testVenue2.Save();
+
+            //Act
+            testVenue1.Delete();
+            List<Venue> result = Venue.GetAll();
+            List<Venue> resultList = new List<Venue> {testVenue2};
+
+            Assert.Equal(result, resultList);
+        }
+
 
 
         public void Dispose()

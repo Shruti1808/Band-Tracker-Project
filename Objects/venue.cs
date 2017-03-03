@@ -183,11 +183,13 @@ namespace BandTracker
           SqlParameter bandIdParameter = new SqlParameter();
           bandIdParameter.ParameterName = "@BandId";
           bandIdParameter.Value = newBand.GetId();
-          cmd.Parameters.Add(bandIdParameter);
 
           SqlParameter venueIdParameter = new SqlParameter();
           venueIdParameter.ParameterName = "@VenueId";
           venueIdParameter.Value = this.GetId();
+
+
+          cmd.Parameters.Add(bandIdParameter);
           cmd.Parameters.Add(venueIdParameter);
 
           cmd.ExecuteNonQuery();
@@ -233,6 +235,28 @@ namespace BandTracker
           }
           return bands;
         }
+
+        public void Delete()
+            {
+              SqlConnection conn = DB.Connection();
+              conn.Open();
+
+              SqlCommand cmd = new SqlCommand("DELETE FROM venues WHERE id = @VenueId; DELETE FROM venues_bands WHERE venue_id = @VenueId;", conn);
+
+              SqlParameter venueIdParameter = new SqlParameter();
+              venueIdParameter.ParameterName = "@VenueId";
+              venueIdParameter.Value = this.GetId();
+
+              cmd.Parameters.Add(venueIdParameter);
+              cmd.ExecuteNonQuery();
+
+              if (conn != null)
+              {
+                conn.Close();
+              }
+            }
+
+
 
     public static void DeleteAll()
     {
