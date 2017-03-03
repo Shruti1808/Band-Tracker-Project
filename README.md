@@ -7,14 +7,6 @@
 _This program is a web application designed for tracking a band. It will allow the user to add bands to a venue. It will also allow them to view the list of bands that played at a particular venue and vice-versa. The user can edit and delete any venue.
 
 ### Specifications
-| Behavior | Input | Output |
-|:---  | :---  | :----  |
-|Adds a new stylist to a list| `new stylist = "Nancy"`| `"List of Stylists: Nancy"`|
-|Edits stylist name| `stylist = "Nancy", new name = "Nancy Jr."`| `"List of Stylists: Nancy Jr."`|
-|Removes a stylist from list| `remove stylist "Nancy"`| `No stylists in list.`|
-|Adds a client to a list of stylist's clients| `new client: name = "Beck", stylist = "Nancy";`| `"List of Nancy's clients: Beck"`|
-|Edits client name| `client = "Beck", new name = "Becky"`| `"List of Nancy's clients: Becky"`|
-|Removes a client from stylist records| `remove client "Becky"`| `No clients in Nancy's list.`|
 
 
 ### Setup/Installation Requirements
