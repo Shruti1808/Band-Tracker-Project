@@ -115,25 +115,25 @@ namespace BandTracker
         }
 
 
-        [Fact]
-        public void Test_AddVenue_AddsVenueToBand()
-        {
-            //Arrange
-            Band testBand = new Band("ColdPlay");
-            testBand.Save();
-
-            Venue testVenue = new Venue("KeyArena Theater");
-            testVenue.Save();
-
-            //Act
-            testBand.AddVenue(testVenue);
-
-            List<Venue> result = testBand.GetVenues();
-            List<Venue> testList = new List<Venue>{testVenue};
-
-            //Assert
-            Assert.Equal(testList, result);
-        }
+        // [Fact]
+        // public void Test_AddVenue_AddsVenueToBand()
+        // {
+        //     //Arrange
+        //     Band testBand = new Band("ColdPlay");
+        //     testBand.Save();
+        //
+        //     Venue testVenue = new Venue("KeyArena Theater");
+        //     testVenue.Save();
+        //
+        //     //Act
+        //     testBand.AddVenue(testVenue);
+        //
+        //     List<Venue> result = testBand.GetVenues();
+        //     List<Venue> testList = new List<Venue>{testVenue};
+        //
+        //     //Assert
+        //     Assert.Equal(testList, result);
+        // }
 
 
 
