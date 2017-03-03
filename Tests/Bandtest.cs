@@ -94,28 +94,46 @@ namespace BandTracker
             string result = newBand.GetName();
 
             //Assert.Equal
-             Assert.Equal(newName, result);
+            Assert.Equal(newName, result);
         }
 
-     [Fact]
-     public void Test_Delete_DeleteSingleBandFromDatabase()
-     {
-         //Arrange
-          Band testBand1 = new Band("ColdPlay");
-          testBand1.Save();
-          Band testBand2 = new Band("ColdPlay");
-          testBand2.Save();
+        [Fact]
+        public void Test_Delete_DeleteSingleBandFromDatabase()
+        {
+            //Arrange
+            Band testBand1 = new Band("ColdPlay");
+            testBand1.Save();
+            Band testBand2 = new Band("ColdPlay");
+            testBand2.Save();
 
-          //Act
-          testBand1.Delete();
-          List<Band> result = Band.GetAll();
-          List<Band> resultList = new List<Band> {testBand2};
+            //Act
+            testBand1.Delete();
+            List<Band> result = Band.GetAll();
+            List<Band> resultList = new List<Band> {testBand2};
 
-          Assert.Equal(result, resultList);
-     }
+            Assert.Equal(result, resultList);
+        }
 
 
+        [Fact]
+        public void Test_AddVenue_AddsVenueToBand()
+        {
+            //Arrange
+            Band testBand = new Band("ColdPlay");
+            testBand.Save();
 
+            Venue testVenue = new Venue("KeyArena Theater");
+            testVenue.Save();
+
+            //Act
+            testBand.AddVenue(testVenue);
+
+            List<Venue> result = testBand.GetVenues();
+            List<Venue> testList = new List<Venue>{testVenue};
+
+            //Assert
+            Assert.Equal(testList, result);
+        }
 
 
 
