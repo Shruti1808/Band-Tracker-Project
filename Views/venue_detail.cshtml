@@ -8,7 +8,7 @@
 
 @if (@Model["venueBands"].Count != 0)
 {
-    <p>No venues have been added yet!</p>
+    <p>No bands have been added yet!</p>
 }
 else
 {
@@ -19,10 +19,22 @@ else
         <li>@band.GetName()</li>
     }
     </ul>
-
 }
 
 
+<form action="/venue/add_band" method="post">
+  <input id="venue-id" name="venue-id" type="hidden" value='@Model["venue"].GetId()'>
 
+  <label for="band-id">Add A Band</label>
+
+
+  <select neme ="band-id">
+    @foreach (var band in @Model["allBands"])
+    {
+      <option value ="@band.GetId()">@band.GetName()</option>
+    }
+  </select>
+  <button type='submit'>Add</button>
+</form>
 
 <h4><a href="/">Return home</a></h4>
