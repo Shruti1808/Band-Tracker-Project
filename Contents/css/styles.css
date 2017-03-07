@@ -1,0 +1,21 @@
+body {
+    background-image: url("../img/image2.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100vw;
+    height:100vh;
+    font-family: 20px "Lato", sans-serif
+    line-height: 1.8;
+}
+
+div.transbox {
+    color: white;
+    padding: 20px;
+    background-color: rgba(201,192,195, 0.5);
+    border: 1px solid white;
+    /*opacity: 0.6;*/
+    position: relative;
+    width:80%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
