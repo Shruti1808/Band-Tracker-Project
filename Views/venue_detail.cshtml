@@ -25,7 +25,7 @@ else
 <form action='/venue/add_band' method='post'>
   <input id='venue-id' name='venue-id' type='hidden' value='@Model["venue"].GetId()'>
   <label for="band-id">Select A Band</label>
-  <select id='venue-id' name='venue-id' type='text'>
+  <select id='band-id' name='band-id' type='text'>
 
     @foreach (var band in @Model["allBands"])
     {

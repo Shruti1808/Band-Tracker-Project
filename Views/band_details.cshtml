@@ -26,6 +26,7 @@ else
   <input id='band-id' name='band-id' type='hidden' value='@Model["band"].GetId()'>
   <label for='venue-id'>Select a venue:</label>
   <select id='venue-id' name='venue-id' type='text'>
+    
     @foreach (var venue in @Model["allVenues"])
     {
       <option value='@venue.GetId()'>@venue.GetName()</option>
